@@ -1,0 +1,2552 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap');
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121212;
+    color: #f0f0f0;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    cursor: pointer;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Ripple Effect */
+.ripple {
+    position: fixed; /* Fixed position ensures it appears on the entire page */
+    width: 20px;
+    height: 20px;
+    background: rgba(201, 244, 250, 0.075); /* Ripple color */
+    border-radius: 50%;
+    transform: scale(0);
+    animation: rippleAnimation 3s ease-out forwards;
+    pointer-events: none; /* Prevent blocking clicks */
+    z-index: 9999; /* Ensure it appears above other content */
+}
+
+/* Ripple Animation */
+@keyframes rippleAnimation {
+    0% {
+        transform: scale(0);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(10); /* Expand outward */
+        opacity: 0;
+    }
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    z-index: 10; 
+    background: radial-gradient(circle at top, 
+        #060813 10%,   /* Very dark blue */
+        #0c0f19 30%,   /* Darker blue-gray */
+        #18202b 60%,   /* Charcoal gray */
+        #061413 100%   /* Black */
+    );
+}
+/* Logo Container */
+.logo {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 2rem;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    color: #00bcd4;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative; 
+    overflow: visible;
+}
+
+/* Logo Image */
+.logo img {
+    max-width: 100%;
+    width: 200px;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.logo:hover img {
+    transform: scale(1.1) rotate(3deg); /* Slight zoom and tilt */
+    filter: drop-shadow(0 0 15px rgba(4, 152, 160, 0.8)); /* Glowing effect */
+}
+
+/* Ripple Rings */
+.logo::before,
+.logo::after,
+.logo .ripple-1,
+.logo .ripple-2,
+.logo .ripple-3 {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-color: rgba(10, 185, 208, 0.4);
+    animation: rippleEffect 1.5s ease-out infinite;
+}
+
+/* Staggered Ripple Delays with Custom Colors */
+.logo::before {
+    background-color: rgba(10, 185, 208, 0.955); /* Darker Cyan */
+    animation-delay: 0s;
+}
+
+.logo::after {
+    background-color: rgba(9, 136, 145, 0.916); /* Slightly Lighter Cyan */
+    animation-delay: 0.5s;
+}
+
+.logo .ripple-1 {
+    background-color: rgba(253, 255, 255, 0.844); /* Medium Light Cyan */
+    animation-delay: 1s;
+}
+
+.logo .ripple-2 {
+    background-color: rgba(10, 69, 118, 0.801); /* Light Cyan */
+    animation-delay: 1.5s;
+}
+
+.logo .ripple-3 {
+    background-color: rgba(4, 43, 82, 0.838); /* Lightest Cyan */
+    animation-delay: 2s;
+}
+
+/* Ripple Animation */
+@keyframes rippleEffect {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 1.5rem 0;
+}
+
+.nav-links a {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover Effect for Links */
+.nav-links a::before {
+    content: "";
+    position: absolute;
+    bottom: -5px; /* Positioned below the text */
+    left: 0;
+    width: 0;
+    height: 2px; /* Underline thickness */
+    background-color: #00bcd4;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-links a:hover::before {
+    width: 100%; /* Underline grows from left to right */
+}
+
+.nav-links a:hover {
+    color: #00bcd4; /* Text color changes */
+    transform: translateX(5px); /* Slight slide effect */
+    text-shadow: 0 0 10px rgba(0, 188, 212, 0.8);
+}
+
+/* Logo Container */
+.logo-container {
+    position: relative;
+    display: inline-block;
+    width: 200px; /* Match the logo size */
+    height: 200px;
+    overflow: visible; /* Allow the blob to move outside the container */
+}
+
+/* Blob Styling */
+.blob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px; /* Slightly larger than the logo */
+    height: 120px;
+    transform: translate(0%, -30%);
+    z-index: 2; /* Places the blob behind the logo */
+}
+
+.blob svg {
+    width: 100%;
+    height: 100%;
+    animation: rotateBlob 6s infinite linear;
+}
+
+.blob path {
+    animation: morphBlob 3s infinite ease-in-out alternate;
+}
+
+/* Blob Path Morphing Animation */
+@keyframes morphBlob {
+    0% {
+        d: path("M 100, 100 m -50, 0 a 50,50 0 1,0 100,0 a 50,50 0 1,0 -100,0"); /* Perfect circle */
+    }
+    50% {
+        d: path("M 100, 100 m -50, 0 a 50,50 0 1,0 90,20 a 50,50 0 1,0 -90,-20"); /* Slightly deformed */
+    }
+    100% {
+        d: path("M 100, 100 m -50, 0 a 50,50 0 1,0 70,30 a 50,50 0 1,0 -70,-30"); /* More deformed */
+    }
+}
+
+/* Blob Rotation Animation */
+@keyframes rotateBlob {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(1.05);
+    }
+}
+
+/* Cosmic Background Container */
+.cosmic-background {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Behind content */
+    pointer-events: none; /* Allow interaction with content */
+}
+
+/* Star and Particle Base */
+.star, .particle {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8); /* White with slight transparency */
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    animation-timing-function: linear;
+}
+
+/* Twinkling Star Animation */
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Drifting Particle Animation */
+@keyframes drift {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-30px) translateX(30px);
+        opacity: 0;
+    }
+}
+
+/* Header with Parallax Effect */
+header {
+    margin-left: 220px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-image:
+        repeating-linear-gradient(
+            to right, #637172 0 1px, transparent 2px 200px
+        ),
+        repeating-linear-gradient(
+            to bottom, #243739 0 1px, transparent 2px 200px
+        ),
+        radial-gradient(
+            at 50% 50%, #052229, #0e0d16
+        );
+    background-size: cover; /* Ensures the background covers the entire section */
+    background-attachment: fixed; /* Enables the parallax effect */
+    background-position: center; /* Keeps the background centered */
+    text-align: center;
+    position: relative; /* Needed for canvas positioning */
+    overflow: hidden;   /* Prevent canvas overflow */
+}
+
+/* Keyframes for the smooth wave effect */
+@keyframes wave {
+    0%, 100% { transform: translateY(0); } /* Start and end at the baseline */
+    50% { transform: translateY(-10px); } /* Move up smoothly */
+}
+
+/* Styling the wave effect */
+.wave-effect span {
+    display: inline-block; /* Each letter becomes a block so we can animate it */
+    animation: wave 1.5s ease-in-out infinite; /* Smooth wave motion */
+    animation-delay: calc(var(--i) * 0.1s); /* Delay for each letter */
+}
+
+/* Add a unique delay for each letter */
+.wave-effect span:nth-child(1) { --i: 0; }
+.wave-effect span:nth-child(2) { --i: 1; }
+.wave-effect span:nth-child(3) { --i: 2; }
+.wave-effect span:nth-child(4) { --i: 3; }
+.wave-effect span:nth-child(5) { --i: 4; }
+.wave-effect span:nth-child(6) { --i: 5; }
+.wave-effect span:nth-child(7) { --i: 6; }
+.wave-effect span:nth-child(8) { --i: 7; }
+.wave-effect span:nth-child(9) { --i: 8; }
+.wave-effect span:nth-child(10) { --i: 9; }
+.wave-effect span:nth-child(11) { --i: 10; }
+.wave-effect span:nth-child(12) { --i: 11; }
+.wave-effect span:nth-child(13) { --i: 12; }
+.wave-effect span:nth-child(14) { --i: 13; }
+
+/* Floating Astronaut */
+.floating-astronaut {
+    position: absolute;
+    width: 500px; /* Make the astronaut larger */
+    animation: floatAstronaut 6s infinite ease-in-out; /* Floating animation */
+    pointer-events: none; /* Prevent it from blocking interactions */
+    z-index: 10; /* Keeps it above other header content */
+}
+
+/* Astronaut Image */
+.floating-astronaut img {
+    width: 100%; /* Make the image fill the container */
+    transform: translate(-80%,40%);
+    height: auto;
+}
+
+/* Floating Animation */
+@keyframes floatAstronaut {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(3deg); /* Float up slightly with a tilt */
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    z-index: 10; /* Ensures content stays above the canvas */
+    position: relative;
+}
+
+.intro-text {
+    max-width: 500px;
+}
+
+.intro-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: center;
+    gap: 0.5rem;
+    color: #c66205;
+}
+
+.intro-text h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.intro-text h2 .static-text {
+    color: #f0f0f0; /* Static "Hello, I'm" */
+}
+
+.intro-text h2 .typing-text {
+    color: #00bcd4;
+    display: inline-block; /* Prevents shifting */
+    min-width: 8ch; /* Adjust based on longest word */
+}
+
+/* Styling for the typing text */
+.typing-text::after {
+    content: "|"; /* The cursor character */
+    display: inline-block;
+    margin-left: 5px;
+    color: #afe8eb; /* Cursor color */
+    animation: blink-cursor 0.7s infinite;
+}
+
+/* Blinking animation */
+@keyframes blink-cursor {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.intro-text p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Hero Image Container */
+.hero-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Image with Floating Effect */
+.hero-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #00bcd4;
+    animation: floatingWave 5s infinite ease-in-out, flickerGlow 3s infinite ease-in-out; /* Add glowing animation */
+    box-shadow: 0 0 10px 3px rgba(0, 188, 212, 0.5); /* Initial soft glow */
+}
+
+/* Keyframes for the glowing effect */
+@keyframes flickerGlow {
+    0%, 100% {
+        box-shadow: 0 0 10px 3px rgba(3, 118, 133, 0.5); /* Soft initial glow */
+    }
+    50% {
+        box-shadow: 0 0 25px 8px rgba(5, 149, 159, 0.8); /* Stronger glow at the peak */
+    }
+}
+
+/* Floating and Waving Animation */
+@keyframes floatingWave {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+/* Canvas Background for Spider Web Effect */
+header #dotsCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Ensures canvas doesn't block interactions */
+    z-index: 1; /* Keeps canvas behind the content */
+}
+
+/* About Section */
+.about-section {
+    position: relative;
+    background-color: #121212; /* Dark background */
+    color: #f0f0f0;
+    overflow: hidden; /* Prevent overflow */
+    padding: 4rem 2rem;
+    text-align: center;
+    z-index: 1;
+}
+
+/* Background Container */
+.sketch-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 15px;
+    z-index: -1;
+    pointer-events: none; /* Allow interaction with content */
+    overflow: hidden; /* Prevent overflow */
+}
+
+/* Sketch Columns */
+.sketch-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between images */
+    animation: scrollReel linear infinite;
+    animation-duration: var(--speed, 10s);
+    animation-delay: calc(var(--delay, 0s) - 0.1s); /* Start immediately */
+    transform: translateY(0); /* Reset position */
+}
+
+/* Sketch Sizes */
+.sketch.tall { height: 250px; }
+.sketch.medium { height: 200px; }
+.sketch.short { height: 150px; }
+
+/* Sketch Images */
+.sketch img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.04; /* Subtle visibility */
+}
+
+/* Reel Animation */
+@keyframes scrollReel {
+    0% {
+        transform: translateY(0); /* Start at the top */
+    }
+    100% {
+        transform: translateY(-50%); /* Scroll up halfway */
+    }
+}
+
+.about-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #c66205; /* Highlight color */
+    text-align: center;   
+    position: relative;
+    white-space: nowrap; /* Prevent text wrapping */
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Center the section */
+#about {
+    text-align: center;
+}
+
+/* Style the Eyes (O and E) */
+.eye {
+    display: inline-flex; /* Inline-flex ensures perfect alignment */
+    position: relative;
+    justify-content: center;
+    align-items: center; /* Centers the pupil */
+    width: 0.6em; /* Match the natural size of the letter */
+    height: 1em; /* Maintain letter height */
+    overflow: hidden; /* Keep the pupil inside the letter */
+    vertical-align: baseline; /* Align with the text baseline */
+    color: #5c7078;
+}
+
+/* Pupil Styling */
+.pupil {
+    width: 0.3em; /* Relative size for the pupil */
+    height: 0.3em;
+    background-color: rgb(209, 245, 244); /* White pupil */
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: top 0.2s ease, left 0.2s ease; /* Smooth movement */
+}
+
+/* Blink effect */
+.blink .pupil {
+    height: 0.05em; /* Shrink pupil for blinking */
+    transition: height 0.1s ease-out;
+}
+
+.about-section p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem; 
+    color: #ccc;
+}
+
+.wrapper-p p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem; 
+    padding-left: 5rem;
+    padding-right: 5rem;
+    color: #ccc; 
+}
+
+/* Two Boxes Container */
+.about-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem; /* Space between boxes */
+    margin-top: 2rem;
+}
+
+/* Individual Box */
+.about-box {
+    background-color: #373b3b57;     
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 350px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    text-align: left;
+}
+
+.about-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #e1e1e1;
+}
+
+.about-box p,
+.about-box ul {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ddd;
+}
+
+.about-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-box ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* Hidden State (Before Reveal) */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px); /* Start from below */
+}
+
+/* Visible State (After Reveal) */
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform 1s ease-out, opacity 1s ease-out; /* Smooth reveal */
+}
+
+/* Section Education */
+.edu {
+    position: relative;
+    background-color: #121212; /* Dark background */
+    color: #f0f0f0;
+    padding: 4rem 2rem;
+    overflow: hidden; /* Prevent overflow */
+    text-align: center;
+    z-index: 1;
+}
+
+/* Background Shapes Container */
+.background-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Behind the content */
+    pointer-events: none; /* Ensure shapes don't block interactions */
+    overflow: hidden;
+}
+
+/* Base Style for Shapes */
+.shape {
+    position: absolute;
+    opacity: 0.1; /* Subtle visibility */
+    animation: moveShape linear infinite;
+    border-radius: 50%; /* Default to circle */
+    background-color: #777; /* Default grey */
+}
+
+/* Shape Variants */
+.shape.circle {
+    background-color: #555; /* Medium grey */
+}
+.shape.square {
+    background-color: #333; /* Dark grey */
+    border-radius: 0; /* Square */
+}
+.shape.triangle {
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 60px solid #999; /* Light grey */
+    background: none;
+    opacity: 0.15;
+}
+
+/* Floating Animation */
+@keyframes moveShape {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+    }
+    25% {
+        transform: translateY(-80px) translateX(50px) rotate(30deg) scale(1.1);
+    }
+    50% {
+        transform: translateY(80px) translateX(-50px) rotate(60deg) scale(0.9);
+    }
+    75% {
+        transform: translateY(-50px) translateX(-80px) rotate(90deg) scale(1.2);
+    }
+    100% {
+        transform: translateY(0) translateX(0) rotate(360deg) scale(1);
+    }
+}
+
+.edu h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #c66205;
+}
+
+/* Timeline Container */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Vertical Line */
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background-color: #454d4f;
+    transform: translateX(-50%);
+}
+
+/* Individual Timeline Items */
+.timeline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin: 2rem 0;
+    opacity: 0; /* Hidden initially */
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.timeline-item .content {
+    background-color: #373b3b57;
+    border-bottom: 2px solid #ededed;
+    border-right: 2px solid #ededed;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 45%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    transition: box-shadow 0.3s ease;
+}
+
+.timeline-item .content h3 {
+    font-size: 1.5rem;
+    color: #e1e1e1;
+    text-shadow: 0 0 5px #1b1b1b;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-item .content p {
+    font-size: 1rem;
+    color: #ddd;
+    line-height: 1.6;
+}
+
+/* Left-aligned Content */
+.content.left {
+    text-align: right;
+    margin-right: 2rem;
+}
+
+/* Right-aligned Content */
+.content.right {
+    text-align: left;
+    margin-left: 2rem;
+}
+
+/* Circle Indicator with Glowing Effect */
+.timeline-item::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    background-color: #00bcd4;
+    border: 3px solid #1f1f1f;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    animation: flickerGlow 2s infinite ease-in-out;
+}
+
+/* Keyframes for Flickering Glow */
+@keyframes flickerGlow {
+    0%, 100% {
+        box-shadow: 0 0 5px #00bcd4, 0 0 10px #00bcd4, 0 0 15px #00bcd4;
+        opacity: 0.8;
+    }
+    30% {
+        box-shadow: 0 0 6px #00bcd4, 0 0 12px #00bcd4, 0 0 18px #00bcd4;
+        opacity: 1;
+    }
+    60% {
+        box-shadow: 0 0 4px #00bcd4, 0 0 8px #00bcd4, 0 0 10px #00bcd4;
+        opacity: 0.7;
+    }
+    80% {
+        box-shadow: 0 0 7px #00bcd4, 0 0 14px #00bcd4, 0 0 20px #00bcd4;
+        opacity: 0.9;
+    }
+}
+
+/* Reveal Animation */
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hover Effect for Content */
+.timeline-item .content:hover {
+    box-shadow: 0 8px 12px rgba(0, 188, 212, 0.5);
+}
+
+/* Breaker Section */
+.grid {
+    position: relative;
+    width: 100vw;
+    height: 50vh; /* Compact section height */
+    margin: 0 auto; /* Remove top margin, center the section */
+    overflow: hidden; /* Prevent overflow issues */
+}
+
+/* Words with fixed positions and font variations */
+.autoBLur {
+    position: absolute;
+    opacity: 0.5; /* Start slightly transparent */
+    filter: blur(10px); /* Start with blur */
+    color: white; /* Keep text white */
+    transition: all 0.5s ease-out;
+}
+
+/* Original positions, keeping "PORTFOLIO" and "DESIGN SYSTEMS" unchanged */
+.autoBLur:nth-child(1) { 
+    top: 5%; left: 15%; 
+    font-size: 6rem; /* Very large */
+    font-weight: 700; 
+} /* CONSTELLATION */
+
+.autoBLur:nth-child(2) { 
+    top: 10%; left: 50%; 
+    font-size: 2.5rem; 
+    font-style: italic; 
+} /* UI/UX DESIGN */
+
+.autoBLur:nth-child(3) { 
+    top: 20%; left: 30%; 
+    font-size: 2rem; 
+    font-weight: 400; 
+} /* ARVIN */
+
+.autoBLur:nth-child(4) { 
+    top: 25%; left: 70%; 
+    font-size: 3rem; 
+    font-weight: 700; 
+    font-style: italic; 
+} /* DEVELOPER */
+
+.autoBLur:nth-child(5) { 
+    top: 35%; left: 10%; 
+    font-size: 2.8rem; 
+    font-style: italic; 
+    font-weight: 400; 
+} /* PORTFOLIO */
+
+.autoBLur:nth-child(6) { 
+    top: 40%; left: 50%; 
+    font-size: 3rem; 
+    font-weight: 700; 
+} /* INTERNSHIP */
+
+.autoBLur:nth-child(7) { 
+    top: 15%; left: 80%; 
+    font-size: 7rem; /* Very large */
+    font-weight: 700; 
+    font-style: italic; 
+} /* PROTOTYPING */
+
+.autoBLur:nth-child(8) { 
+    top: 30%; left: 20%; 
+    font-size: 2.6rem; 
+    font-weight: 400; 
+} /* WIREFRAMES */
+
+.autoBLur:nth-child(9) { 
+    top: 40%; left: 70%; 
+    font-size: 2.2rem; 
+    font-weight: 700; 
+} /* USER RESEARCH */
+
+.autoBLur:nth-child(10) { 
+    top: 50%; left: 40%; 
+    font-size: 2.9rem; 
+    font-style: italic; 
+    font-weight: 400; 
+} /* DESIGN THINKING */
+
+.autoBLur:nth-child(11) { 
+    top: 55%; left: 75%; 
+    font-size: 3.8rem; 
+    font-weight: 700; 
+} /* ACCESSIBILITY */
+
+.autoBLur:nth-child(12) { 
+    top: 60%; left: 25%; 
+    font-size: 2.3rem; 
+    font-weight: 400; 
+} /* TYPOGRAPHY */
+
+.autoBLur:nth-child(13) { 
+    top: 65%; left: 5%; 
+    font-size: 3rem; 
+    font-style: italic; 
+    font-weight: 700; 
+} /* CREATIVE PROCESS */
+
+.autoBLur:nth-child(14) { 
+    top: 70%; left: 85%; 
+    font-size: 2.7rem; 
+    font-weight: 400; 
+    font-style: italic; 
+} /* COLLABORATION */
+
+.autoBLur:nth-child(15) { 
+    top: 60%; left: 50%; 
+    font-size: 5.5rem; 
+    font-weight: 700; 
+} /* DESIGN SYSTEMS */
+
+/* Focused word */
+.autoBLur.focused {
+    filter: blur(0); /* Remove blur */
+    opacity: 1; /* Make fully visible */
+    transform: scale(1.2); /* Slightly enlarge the focused word */
+}
+
+.skills {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    color: white; /* Set the font color to white */
+    position: relative;
+    overflow: hidden; /* Prevent overflow */
+    z-index: 1;
+}
+
+.skills-upper {
+    position: relative; /* Position relative for absolute positioning of the slider */
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    width: 100%;
+}
+
+.skills-box {
+    border-right: 2px solid #eeeeee; /* White border for visibility */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 40%; /* Adjust width as needed */
+    background: #282a2af3;
+    position: relative; /* Position relative to allow for layering */
+    z-index: 2; /* Bring to front */
+}
+
+.skills-box h2 {
+    color: #f48803;
+    font-size: 2rem;
+}
+
+.slider-container {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Center the slider container */
+    align-items: center;
+    position: absolute; /* Position absolute to span behind the skills box */
+    left: 0;
+    right: 0;
+    top: 50%; /* Center the slider vertically */
+    transform: translateY(-50%); /* Adjust for half of its height */
+    z-index: 1; /* Behind the skills box */
+}
+
+.skills-lower {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.lower-corner-container {
+    flex: 1;
+    height: 100px; /* Placeholder height */
+    background: transparent; /* Make the lower corner container invisible */
+    border: none; /* Remove any border if applicable */
+}
+
+.soft-skills {
+    flex: 1;
+}
+
+/* Optional styles for tags */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.skill-tag {
+    background: rgba(255, 255, 255, 0.2);
+    color: white; /* White text for tags */
+    border: 1px solid rgba(28, 167, 209, 0.5);
+    border-radius: 15px;
+    padding: 5px 10px;
+    margin: 5px;
+    transition: background 0.3s;
+}
+
+.skill-tag:hover {
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+/* Initially Hidden State */
+.skills .hidden {
+    opacity: 0; /* Invisible */
+    transform: translateY(30px); /* Move down slightly */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Smooth transition */
+}
+
+/* Visible State: Fade-in and Slide-up */
+.skills .hidden.visible {
+    opacity: 1; /* Fade into view */
+    transform: translateY(0); /* Slide up to original position */
+}
+
+/* Word Slider Container */
+.word-slider-container {
+    position: relative;
+    width: 100%;
+    background-color: #121212; /* Match the theme */
+    overflow: hidden; /* Hide overflowing content */
+    padding: 1rem 0;
+    z-index: 2;
+}
+
+/* Word Slider Track */
+.word-slider {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.word-track {
+    display: flex;
+    white-space: nowrap; /* Prevent line breaks */
+    animation: scrollLeft 15s linear infinite; /* Smooth and infinite scroll */
+}
+
+/* Individual Word */
+.word-track .word {
+    font-size: 1.5rem; /* Smaller font size */
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #f0f0f0;
+    margin-right: 2rem; /* Space between words */
+    opacity: 0.85;
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Space around the star */
+}
+
+/* Star Separator */
+.word-track .word::after {
+    content: "★"; /* Star character */
+    font-size: 1.2rem;
+    color: #00bcd4; /* Accent color */
+}
+
+/* Remove the last star */
+.word-track .word:last-child::after {
+    content: "";
+}
+
+/* Keyframes for Infinite Scrolling */
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0); /* Start at the beginning */
+    }
+    100% {
+        transform: translateX(-50%); /* Move halfway for seamless looping */
+    }
+}
+
+/* General Section Styling */
+.projects {
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Prevent overflow */
+}
+
+.projects h2 {
+    font-size: 2.5rem;
+    color: #c66205;
+}
+
+.projects h3 {
+    margin: 3rem;
+    color: #f0f0f0;
+    font-size: 1.5rem;
+}
+
+.projects p {
+    margin: 2rem;
+    color: #f0f0f0;
+    font-size: 1.2rem;
+}
+
+.carousel-slide p {
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.carousel-slide h3 {
+    padding: 0;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.snaking-text p {
+    margin: 0;
+    padding: 0;
+}
+
+.case-study-content p {
+    margin: 0;
+}
+
+.case-study-text h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.case-study-text p {
+    margin: 0;
+    color: #333;
+    font-size: 1rem;
+}
+
+/* Case Studies Grid */
+.case-studies-grid {
+    display: flex;
+    flex-direction: column; /* Stack case studies vertically */
+    gap: 2rem; /* Add spacing between case studies */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem; /* Add padding for better responsiveness */
+}
+
+/* Case Study Card */
+.case-study {
+    display: flex;
+    flex-direction: row; /* Align image and content side by side */
+    background: none; /* Remove default background for detachment effect */
+    border: none; /* Remove border */
+    border-radius: 8px;
+    overflow: hidden;
+    width: 90%; /* Adjust width for better responsiveness */
+    max-width: 800px; /* Limit maximum width */
+    gap: 1rem; /* Add space between image and description */
+    transition: transform 0.3s ease;
+}
+
+/* Case Study Image */
+.case-study img {
+    width: 45%; /* Image takes 40% of the container width */
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for a detached look */
+    transition: transform 0.3s ease;
+}
+
+.case-study img:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+
+/* Case Study Content */
+.case-study-content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    width: 60%; /* Content takes remaining space */
+    background: rgba(60, 57, 57, 0.2); /* Semi-transparent black background */
+    border-radius: 8px; /* Rounded corners */
+    color: white; /* White text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for detachment effect */
+}
+
+.case-study-content h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    color: white; /* Ensure title is white */
+}
+
+.case-study-content p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: white; /* Ensure description text is white */
+    line-height: 1.5;
+}
+
+.see-more-btn {
+    align-self: flex-start; /* Align button to the left */
+    padding: 8px 16px;
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.see-more-btn:hover {
+    background-color: #028ca0;
+}
+
+/* Case Study Modal */
+.case-study-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+
+.case-study-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.case-study-modal-content {
+    display: flex;
+    background: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: relative;
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+}
+
+/* Image Viewer in Modal */
+.case-study-images {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: #f0f0f0;
+    width: 40%; /* Initially set to 40% */
+    padding: 10px;
+    flex-shrink: 0; /* Prevent resizing */
+}
+
+.case-study-images img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 4px;
+    transition: opacity 0.3s ease;
+}
+
+.case-study-prev-btn,
+.case-study-next-btn {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    z-index: 10;
+}
+
+.case-study-prev-btn:hover,
+.case-study-next-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.case-study-prev-btn {
+    left: 10px;
+}
+
+.case-study-next-btn {
+    right: 10px;
+}
+
+/* Text Content in Modal */
+.case-study-text {
+    padding: 20px;
+    width: 60%; /* Initially set to 60% */
+    overflow-y: auto;
+    color: #333;
+    line-height: 1.6;
+}
+
+.case-study-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.case-study-close-btn:hover {
+    color: #00bcd4;
+}
+
+/* Graphic Design Grid */
+.graphic-design-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.design-item {
+    position: relative;
+    width: 250px;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.design-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: filter 0.3s ease;
+}
+
+/* Smooth Overlay Effect */
+.design-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.design-item .overlay-text {
+    color: white;
+    font-size: 1.2rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.design-item:hover img {
+    filter: brightness(0.7); /* Darken the image */
+}
+
+.design-item:hover .overlay {
+    opacity: 1; /* Show overlay */
+}
+
+.design-item:hover .overlay-text {
+    opacity: 1; /* Fade in the text */
+    transform: translateY(0); /* Slide text upward smoothly */
+}
+
+.design-item h4 {
+    text-align: center;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* Modal Styling */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Dark semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Modal Content Box */
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent overflow */
+    background: #000; /* Black background for contrast */
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Image Styling */
+#galleryImage {
+    max-width: 100%;
+    max-height: 90vh; /* Prevent the image from overflowing vertically */
+    object-fit: contain; /* Maintain aspect ratio */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Smooth fade-in effect */
+}
+
+/* Navigation Buttons */
+.prev-btn,
+.next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    z-index: 10;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #00bcd4;
+}
+
+/* Sections */
+section {
+    margin-left: 220px;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* General Button Container */
+.btn-container {
+    text-align: center; /* Center the button */
+    margin-top: 50px;
+}
+
+/* Base Button Styling */
+.btn {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    overflow: hidden; /* Keeps the spans contained */
+    transition: 0.5s;
+    border: 2px solid #03e9f4;
+    border-radius: 5px; /* Optional for rounded corners */
+    background: transparent;
+}
+
+.btn:hover {
+    background: #03e9f4;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #03e9f4,
+                0 0 25px #018a92,
+                0 0 50px #01494d,
+                0 0 100px #028a91;
+}
+
+/* Glowing Snake Effect */
+.btn span {
+    position: absolute;
+    display: block;
+    background: linear-gradient(90deg, transparent, #03e9f4, transparent);
+}
+
+.btn span:nth-child(1) { /* Top Border */
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    animation: glowing-top 1s linear infinite;
+}
+
+@keyframes glowing-top {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.btn span:nth-child(2) { /* Right Border */
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #03e9f4, transparent);
+    animation: glowing-right 1s linear infinite;
+    animation-delay: 0.25s;
+}
+
+@keyframes glowing-right {
+    0% { top: -100%; }
+    100% { top: 100%; }
+}
+
+.btn span:nth-child(3) { /* Bottom Border */
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #03e9f4, transparent);
+    animation: glowing-bottom 1s linear infinite;
+    animation-delay: 0.5s;
+}
+
+@keyframes glowing-bottom {
+    0% { right: -100%; }
+    100% { right: 100%; }
+}
+
+.btn span:nth-child(4) { /* Left Border */
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #03e9f4, transparent);
+    animation: glowing-left 1s linear infinite;
+    animation-delay: 0.75s;
+}
+
+@keyframes glowing-left {
+    0% { bottom: -100%; }
+    100% { bottom: 100%; }
+}
+
+/* Slider Container */
+.slider {
+    width: 100%;
+    height: var(--height);
+    overflow: hidden;
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        #000 10%,
+        #000 90%,
+        transparent
+    );
+    position: relative;
+    --width: 150px;
+    --height: 100px;
+}
+
+/* Image List */
+.slider .list {
+    display: flex;
+    width: calc(var(--width) * var(--quantity)); /* Total width based on image count */
+    position: relative;
+}
+
+/* Individual Image Items */
+.slider .list .item {
+    width: var(--width);
+    height: var(--height);
+    position: absolute; /* Allow individual positioning */
+    left: 100%; /* Start off-screen */
+    animation: autoRun 10s linear infinite; /* Smooth scrolling animation */
+    animation-delay: calc((10s / var(--quantity)) * (var(--position) - 1)); /* Staggered animation */
+    transition: filter 0.5s; /* Smooth hover effect */
+}
+
+.slider .list .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Make image fit the container */
+}
+
+/* Keyframes for Forward Animation */
+@keyframes autoRun {
+    from {
+        left: 100%; /* Start off-screen to the right */
+    }
+    to {
+        left: calc(-1 * var(--width)); /* End off-screen to the left */
+    }
+}
+
+/* Reverse Animation */
+.slider[reverse="true"] .item {
+    animation: reversePlay 10s linear infinite; /* Reverse animation */
+}
+
+@keyframes reversePlay {
+    from {
+        left: calc(-1 * var(--width)); /* Start off-screen to the left */
+    }
+    to {
+        left: 100%; /* End off-screen to the right */
+    }
+}
+
+/* Carousel */
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    text-align: center;
+}
+
+.carousel-slide img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 2rem;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* Modal background */
+.carousel-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* On top of everything */
+}
+
+/* Modal content box */
+.carousel-modal-content {
+    position: relative;
+    background: #292929;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 80%;
+    max-height: 80%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-modal-content img {
+    max-width: 100%;
+    max-height: 70%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.carousel-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+}
+
+.carousel-modal-close:hover {
+    color: red;
+}
+
+#carouselModalText h3,
+#carouselModalText p {
+    margin: 5px 0;
+}
+
+/* Wrapper for carousel and snaking text */
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Match the carousel width */
+    margin: 0 auto;
+}
+
+/* Carousel container */
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #000;
+    border-radius: 12px;
+    z-index: 1; /* Carousel stays above the snaking text */
+}
+
+/* Snaking text container */
+.snaking-text {
+    position: absolute;
+    top: -50px; /* Move the text higher above the carousel */
+    left: -50px; /* Start slightly off-screen for a smoother animation */
+    width: calc(100% + 100px); /* Extend the width to go fully around */
+    height: calc(100% + 100px); /* Extend height for a full circular effect */
+    pointer-events: none; /* Prevent interaction with the text */
+    z-index: 0; /* Place behind the carousel */
+    overflow: hidden; /* Hide text overflow */
+}
+
+/* Snaking text animation */
+.snaking-text p {
+    position: absolute;
+    font-size: 1.5rem; /* Adjust text size */
+    font-weight: bold;
+    color: #333; /* Text color */
+    white-space: nowrap; /* Prevent text wrapping */
+    animation: snakeText 10s linear infinite; /* Smooth looping animation */
+}
+
+/* Keyframes for the snaking text */
+@keyframes snakeText {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Contact Section Background */
+.contact {
+    padding: 4rem 1rem;
+    background: radial-gradient(ellipse at bottom, #0b0d1d, #0e0e0e); /* Starry sky gradient */
+    color: #f0f0f0;
+    position: relative; /* Needed for meteor effect positioning */
+    overflow: hidden; /* Prevent meteors from spilling out */
+}
+
+/* Container for Two Columns */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align columns to the top */
+    gap: 2rem; /* Space between columns */
+    max-width: 1200px; /* Limit width for better spacing */
+    margin: 0 auto; /* Center the container */
+    padding: 0 2rem; /* Add padding for responsiveness */
+}
+
+/* First Column: Contact Me Content */
+.contact-content {
+    flex: 1; /* Take up available space */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+    text-align: center; /* Center text */
+}
+
+.contact-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ed8607; /* Highlight color */
+}
+
+.contact-content p {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.contact-content .btn {
+    display: inline-block;
+    background-color: #00bcd4; /* Primary button color */
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    margin: 0.5rem 0; /* Add spacing between buttons */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.contact-content .btn:hover {
+    background-color: #0097a7; /* Darker shade on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Second Column: Socials and Phone */
+.contact-info {
+    flex: 1; /* Take up available space */
+    text-align: left; /* Align content to the left */
+}
+
+/* Socials Section */
+.contact-info .socials p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #ed8607;
+}
+
+.contact-info .social-buttons {
+    display: flex;
+    gap: 1rem; /* Space between social buttons */
+}
+
+.contact-info .social-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.contact-info .social-btn i {
+    margin-right: 0.5rem;
+}
+
+.contact-info .social-btn.facebook {
+    background: #3b5998; /* Facebook Blue */
+}
+
+.contact-info .social-btn.instagram {
+    background: #e1306c; /* Instagram Pink */
+}
+
+.contact-info .social-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Phone Section */
+.contact-info .phone {
+    margin-top: 2rem; /* Space between socials and phone */
+}
+
+.contact-info .phone p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #ed8607;
+}
+
+/* Meteor Shower Effect */
+.meteor-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Prevent interference with buttons */
+    z-index: 1; /* Behind all content */
+}
+
+.meteor {
+    position: absolute;
+    top: -10px; /* Start above the section */
+    width: 2px; /* Thin meteor line */
+    height: 80px; /* Length of the meteor */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), transparent);
+    border-radius: 50%;
+    opacity: 0;
+    animation: fall 3s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) translateX(0) rotate(45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) translateX(-50vw) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* Twinkling Stars */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none; /* Prevent interference */
+    z-index: 0; /* Behind meteors */
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: twinkle 2s infinite ease-in-out alternate;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* Footer */
+footer {
+    margin-left: 220px;
+    background: radial-gradient(circle, #0b0d1d, #0e0e0e);/* Starry sky gradient */
+    padding: 1rem;
+    text-align: center;
+}
+
+.social-icons a {
+    color: #f0f0f0;
+    margin: 0 10px;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #00bcd4;
+}
+
+/* Hamburger Menu Icon */
+.hamburger {
+    display: none; /* Hidden by default */
+    font-size: 2rem;
+    color: #00bcd4;
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        background-color: #1f1f1f;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        z-index: 999;
+    }
+
+    .logo img {
+        height: 80px;
+    }
+
+    .logo {
+        margin-top: -2rem;
+    }
+
+    .blob {
+        display: none;
+    }
+
+    /* Navigation Links */
+    .nav-links {
+        display: flex; /* Always use flex for layout */
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #1f1f1f;
+        padding: 0;
+        overflow: hidden;
+        max-height: 0; /* Initially hidden */
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    }
+
+    .nav-links.active {
+        max-height: 500px; /* Adjust based on content */
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-links li {
+        margin: 1rem 0;
+    }
+
+    /* Hamburger Menu Icon */
+    .hamburger {
+        display: block;
+        font-size: 2rem;
+        color: #00bcd4;
+        cursor: pointer;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 100;
+        transition: transform 0.3s;
+    }
+
+    /* Hamburger to X Animation */
+    .hamburger.active {
+        transform: rotate(90deg); /* Slight rotation to enhance effect */
+    }
+
+    .hamburger.active i::before {
+        content: "\f00d"; /* Replace bars with 'X' (FontAwesome) */
+    }
+
+    header,
+    section,
+    footer {
+        margin-left: 0;
+        padding: 2rem 1rem;
+    }
+
+    .hero {
+        flex-direction: column;
+    }
+
+    .hero-image img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .intro-text h1 {
+        margin-top: 10rem;
+    }
+
+    .wrapper-p p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem; 
+        padding-left: 0;
+        padding-right: 0;
+        color: #ccc; 
+    }
+
+    .slider {
+        --width: 100px !important; /* Reduce image width for tablets */
+        --height: 70px !important; /* Reduce image height */
+    }
+
+    .sketch-background {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+    }
+
+    .sketch-column {
+        animation-duration: 30s; /* Slower speed for mobile view */
+    }
+
+    .shape {
+        opacity: 0.07; /* Reduce visibility for better performance */
+        animation-duration: calc(var(--duration, 15s) * 1.5); /* Slower on mobile */
+    }
+
+    .timeline::before {
+        left: 20px; /* Move the timeline line to the left */
+        transform: none;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .timeline-item .content {
+        width: calc(100% - 40px); /* Take full width with padding */
+        margin: 0 0 2rem 2rem; /* Align the content to the right of the line */
+        text-align: left;
+        padding: 1rem;
+    }
+
+    .timeline-item::after {
+        left: 20px; /* Align the circle indicator to the timeline line */
+    }
+
+    .timeline-item .content h3 {
+        font-size: 1.2rem; /* Scale down font size */
+    }
+
+    .timeline-item .content p {
+        font-size: 0.9rem; /* Scale down paragraph text */
+    }
+
+    .grid {
+        display: none;
+    }
+
+    .skills-upper {
+        flex-direction: column; /* Stack upper section items vertically */
+        align-items: center;
+    }
+
+    .skills-box {
+        width: 100%; /* Full width on smaller screens */
+        margin: 10px 0; /* Add vertical spacing */
+    }
+
+    .slider-container {
+        display: none; /* Hide slider container on mobile */
+    }
+
+    .lower-corner-container {
+        display: none; /* Hide empty lower container on mobile */
+    }
+
+    .tags {
+        justify-content: center; /* Center tags on smaller screens */
+    }
+
+    .skill-tag {
+        font-size: 0.8rem; /* Smaller font size for tags */
+    }
+
+    .soft-skills {
+        width: 100%; /* Full width on smaller screens */
+        text-align: center; /* Center text and tags */
+    }
+
+    .word-track .word {
+        font-size: 1.2rem; /* Smaller font for tablets */
+        margin-right: 1rem;
+    }
+
+    .word-track .word::after {
+        font-size: 1rem;
+    }
+
+    .projects h2 {
+        font-size: 1.5rem;
+    }
+
+    .case-study {
+        flex-direction: column; /* Stack image and content vertically */
+        align-items: center;
+    }
+
+    .case-study img {
+        width: 100%; /* Image takes full width */
+        max-height: 250px; /* Adjust height for better display */
+    }
+
+    .case-study-content {
+        width: 100%; /* Content takes full width */
+        text-align: center; /* Center text for smaller screens */
+    }
+
+    .case-study-modal-content {
+        flex-direction: column; /* Stack modal content vertically */
+    }
+
+    .case-study-images,
+    .case-study-text {
+        width: 100%; /* Both take full width */
+    }
+
+    .meteor {
+        display: none;
+    }
+
+    .star {
+        width: 0.4vw;
+        height: 0.4vw;
+    }
+
+    .contact h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-container {
+        flex-direction: column; /* Stack columns vertically on smaller screens */
+        align-items: center; /* Center columns horizontally */
+        gap: 3rem; /* Add more spacing between stacked sections */
+    }
+
+    .contact-content, .contact-info {
+        text-align: center; /* Center text in both columns */
+        width: 100%; /* Full width for stacked sections */
+    }
+
+    .contact-info .social-buttons {
+        justify-content: center; /* Center social buttons */
+    }
+
+    .contact-info .phone {
+        text-align: center; /* Center phone number text */
+    }
+
+    footer p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {   
+    .intro-text h1 {
+        font-size: 2rem;
+        margin-top: 5rem;
+    }
+
+    .intro-text h2 {
+        font-size: 1.2rem;
+        margin-left: 2rem;
+        
+    }
+
+    .intro-text p {
+        font-size: 1rem;
+    }
+
+    .hero-image img {
+        width: 150px;
+        height: 150px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: .8rem;
+    }
+
+    .wrapper-p p {
+        font-size: 1rem;
+    }
+
+    .slider {
+        --width: 100px !important; /* Smaller width for mobile devices */
+        --height: 70px !important; /* Smaller height */
+    }
+
+    .about-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .about-boxes h3 {
+        font-size: 1.2rem;
+    }
+
+    .about-boxes p {
+        font-size: 1rem;
+    }
+    
+    .about-boxes ul li {
+        font-size: 1rem;
+    }
+
+    .edu {
+        padding: 2rem 1rem; /* Reduce padding for smaller screens */
+    }
+
+    .timeline::before {
+        left: 15px; /* Adjust the timeline line position */
+    }
+
+    .timeline-item .content {
+        width: calc(100% - 30px);
+        margin: 0 0 1.5rem 1.5rem;
+        padding: 0.8rem;
+    }
+
+    .timeline-item::after {
+        left: 15px; /* Align the circle indicator */
+        width: 12px; /* Smaller size for the circle */
+        height: 12px;
+    }
+
+    .timeline-item .content h3 {
+        font-size: 1rem;
+    }
+
+    .timeline-item .content p {
+        font-size: 0.8rem;
+    }
+
+    .edu h2 {
+        font-size: 1.5rem;
+    }
+
+    .timeline-item .content h3 {
+        font-size: 1.2rem;
+    }
+
+    .timeline-item .content p {
+        font-size: 1rem;
+    }
+    
+    p {
+        font-size: 1rem;
+    }
+
+    .grid {
+        display: none;
+    }
+
+    .skills-box {
+        padding: 15px; /* Reduce padding for small screens */
+    }
+
+    .skills-box h2 {
+        font-size: 1.2rem; /* Adjust heading size */
+    }
+
+    .skill-tag {
+        font-size: 0.7rem; /* Even smaller text for tags */
+        padding: 4px 8px;
+    }
+
+    .word-track .word {
+        font-size: 1rem; /* Smaller font for mobile */
+        margin-right: 0.8rem;
+    }
+
+    .word-track .word::after {
+        font-size: 0.8rem;
+    }
+
+    .projects h2 {
+        font-size: 1.5rem;
+    }
+
+    .meteor {
+        width: 1vw; /* Larger meteors for very small screens */
+        height: 2vh;
+        animation-duration: 1.5s; /* Even faster */
+    }
+
+    .star {
+        width: 0.5vw;
+        height: 0.5vw;
+    }
+
+    .contact-content h2 {
+        font-size: 1.5rem; /* Smaller heading for mobile */
+    }
+
+    .contact-content p {
+        font-size: 1rem; /* Smaller text for mobile */
+    }
+
+    .contact-content .btn {
+        padding: 0.5rem 1rem; /* Smaller buttons for mobile */
+        font-size: 0.8rem;
+    }
+
+    .contact-info .social-btn {
+        padding: 0.5rem 1rem; /* Compact padding for mobile */
+        font-size: 0.8rem; /* Smaller font size for mobile */
+        width: auto; /* Ensure buttons don’t stretch */
+    }
+
+    .contact-info .social-buttons {
+        flex-direction: row; /* Keep buttons in a row */
+        gap: 0.5rem; /* Reduce gap between buttons */
+        justify-content: center; /* Center buttons horizontally */
+    }
+
+    footer p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px; /* Distance from the bottom */
+    right: 30px; /* Distance from the right */
+    width: 50px;
+    height: 50px;
+    background-color: #00bcd4; /* Button color */
+    color: #fff;
+    border: none;
+    border-radius: 50%; /* Circular button */
+    font-size: 24px;
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000; /* Ensures it stays above other elements */
+}
+
+.back-to-top:hover {
+    background-color: #00a5b5; /* Slightly darker on hover */
+    transform: scale(1.1); /* Slight zoom effect */
+}

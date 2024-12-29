@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constellation Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="assets/images/title-logo.png" type="image/x-icon" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo-container">
+            <!-- SVG Blob -->
+            <div class="blob">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="blobGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color: #ff7eb3; stop-opacity: 1" />
+                            <stop offset="100%" style="stop-color: #00bcd4; stop-opacity: 1" />
+                        </linearGradient>
+                    </defs>
+                    <path id="blobPath" 
+                          d="M 100, 100
+                             m -50, 0
+                             a 50,50 0 1,0 100,0
+                             a 50,50 0 1,0 -100,0" 
+                          fill="url(#blobGradient)"/>
+                </svg>
+            </div>
+            <!-- Logo -->
+            <div class="logo">
+                <a href="#">
+                    <img src="assets/images/logo.png" alt="ArviniX">
+                </a>
+                <span class="ripple-1"></span>
+                <span class="ripple-2"></span>
+                <span class="ripple-3"></span>
+            </div>
+        </div>
+
+        <!-- Cosmic Background -->
+        <div class="cosmic-background"></div>
+    
+        <!-- Hamburger Menu -->
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    
+        <!-- Navigation Links -->
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#edu">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <!-- Header Section -->
+    <header>
+        <div class="hero">
+            <div class="intro-text">
+                <h1 class="wave-effect">
+                    <span>H</span><span>e</span><span>l</span><span>l</span><span>o</span><span>!</span>
+                    <span>&nbsp;</span>
+                    <span>I</span><span>'</span><span>m</span>
+                    <span>&nbsp;</span>
+                    <span>V</span><span>i</span><span>n</span><span>.</span>
+                </h1>
+                <h2>An aspiring <span class="typing-text"></span></h2>
+                <p>Creating intuitive and stunning user experiences</p>
+                <div class="btn-container">
+                    <a href="#projects" class="btn">
+                        View My Work
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/images/profile.jpg" alt="Your Picture">
+            </div>
+        </div>
+        <div class="floating-astronaut">
+            <img src="assets/images/astro.png" alt="Floating Astronaut">
+        </div>
+        <canvas id="dotsCanvas"></canvas>
+    </header>
+    <div class="slider" style="
+        --width: 150px;
+        --height: 100px;
+        --quantity: 10;
+    ">
+        <div class="list">
+            <div class="item" style="--position: 1"><img src="assets/images/logo.png" alt="Image 1"></div>
+            <div class="item" style="--position: 2"><img src="assets/images/logo1.png" alt="Image 2"></div>
+            <div class="item" style="--position: 3"><img src="assets/images/logo2.png" alt="Image 3"></div>
+            <div class="item" style="--position: 4"><img src="assets/images/logo3.png" alt="Image 4"></div>
+            <div class="item" style="--position: 5"><img src="assets/images/logo4.png" alt="Image 5"></div>
+            <div class="item" style="--position: 6"><img src="assets/images/logo5.png" alt="Image 6"></div>
+            <div class="item" style="--position: 7"><img src="assets/images/logo6.png" alt="Image 7"></div>
+            <div class="item" style="--position: 8"><img src="assets/images/logo7.png" alt="Image 8"></div>
+            <div class="item" style="--position: 9"><img src="assets/images/logo8.png" alt="Image 9"></div>
+            <div class="item" style="--position: 10"><img src="assets/images/logo9.png" alt="Image 10"></div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <!-- Moving Background Sketch Columns -->
+        <div class="sketch-background">
+            <!-- Column 1 -->
+            <div class="sketch-column" style="--speed: 8s; --delay: 0s;">
+                <div class="sketch tall"><img src="assets/images/brochure1.png" alt="Sketch 1"></div>
+                <div class="sketch medium"><img src="assets/images/brochure2.png" alt="Sketch 2"></div>
+                <div class="sketch short"><img src="assets/images/book4.png" alt="Sketch 3"></div>
+                <!-- Duplicate Content -->
+                <div class="sketch tall"><img src="assets/images/brochure1.png" alt="Sketch 1"></div>
+                <div class="sketch medium"><img src="assets/images/brochure2.png" alt="Sketch 2"></div>
+                <div class="sketch short"><img src="assets/images/book4.png" alt="Sketch 3"></div>
+            </div>
+            <!-- Column 2 -->
+            <div class="sketch-column" style="--speed: 10s; --delay: 2s;">
+                <div class="sketch medium"><img src="assets/images/magazine2.png" alt="Sketch 4"></div>
+                <div class="sketch short"><img src="assets/images/brochure1.png" alt="Sketch 5"></div>
+                <div class="sketch tall"><img src="assets/images/magazine3.png" alt="Sketch 1"></div>
+                <!-- Duplicate Content -->
+                <div class="sketch medium"><img src="assets/images/magazine2.png" alt="Sketch 4"></div>
+                <div class="sketch short"><img src="assets/images/brochure1.png" alt="Sketch 5"></div>
+                <div class="sketch tall"><img src="assets/images/magazine3.png" alt="Sketch 1"></div>
+            </div>
+            <!-- Column 3 -->
+            <div class="sketch-column" style="--speed: 12s; --delay: 1.5s;">
+                <div class="sketch short"><img src="assets/images/brochure2.png" alt="Sketch 2"></div>
+                <div class="sketch tall"><img src="assets/images/magazine1.png" alt="Sketch 3"></div>
+                <div class="sketch medium"><img src="assets/images/magazine2.png" alt="Sketch 4"></div>
+                <!-- Duplicate Content -->
+                <div class="sketch short"><img src="assets/images/brochure2.png" alt="Sketch 2"></div>
+                <div class="sketch tall"><img src="assets/images/magazine1.png" alt="Sketch 3"></div>
+                <div class="sketch medium"><img src="assets/images/magazine2.png" alt="Sketch 4"></div>
+            </div>
+            <!-- Column 4 -->
+            <div class="sketch-column" style="--speed: 9s; --delay: 3s;">
+                <div class="sketch medium"><img src="assets/images/book1.png" alt="Sketch 5"></div>
+                <div class="sketch short"><img src="assets/images/brochure2.png" alt="Sketch 1"></div>
+                <div class="sketch tall"><img src="assets/images/brochure2.png" alt="Sketch 2"></div>
+                <!-- Duplicate Content -->
+                <div class="sketch medium"><img src="assets/images/book1.png" alt="Sketch 5"></div>
+                <div class="sketch short"><img src="assets/images/brochure2.png" alt="Sketch 1"></div>
+                <div class="sketch tall"><img src="assets/images/brochure2.png" alt="Sketch 2"></div>
+            </div>
+        </div>
+    
+        <div class="content">
+            <!-- Section Content -->
+            <h2>
+                A<span class="eye" id="eye-b">b<span class="pupil"></span></span>
+                <span class="eye" id="eye-o">o<span class="pupil"></span></span>ut Me
+            </h2>
+            <div class="wrapper-p">
+                <p>I’m passionate about learning UI/UX design process and principles. As I begin my professional journey, I’m excited to 
+                    apply my creativity and growing skills to real-world projects and contribute to meaningful user experiences.</p>
+            </div>
+        
+            <!-- Two Boxes -->
+            <div class="about-boxes">
+                <div class="about-box hidden">
+                    <h3>Who I Am</h3>
+                    <p>
+                        I'M Arvin Lesigues, 25 years old. I'm a creative and curious individual with a strong passion for crafting intuitive user experiences. 
+                        Although, I might be lacking professional experience, I've honed my skills in UI/UX design, prototyping, and logical thinking thru 
+                        personal projects and studying the works of big leagues.
+                    </p>
+                </div>
+                <div class="about-box hidden">
+                    <h3>My Hobbies</h3>
+                    <ul>
+                        <li>🎨 Drawing and sketching</li>
+                        <li>🎮 Playing video games</li>
+                        <li>📖 Reading and creative writing</li>
+                        <li>🛜 Surfing (but on the internet)</li>
+                        <li>🎧 Listening to music</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="edu" class="edu">
+        <!-- Background Shapes -->
+        <div class="background-shapes"></div>
+        <h2>Educational Background</h2>
+        <div class="timeline">
+            <!-- Education Item 1 (Left) -->
+            <div class="timeline-item hidden left">
+                <div class="content">
+                    <h3>Bachelor of Science in Information Technology</h3>
+                    <p>AMA Computer Learning Center College. S.Y. 2021-present</p>
+                </div>
+                <div class="dot"></div>
+            </div>
+    
+            <!-- Education Item 2 (Right) -->
+            <div class="timeline-item hidden right">
+                <div class="dot"></div>
+                <div class="content">
+                    <h3>Bachelor of Science in Architecture</h3>
+                    <p> Eastern Visayas State University. S.Y. 2015-2020</p>
+                </div>
+            </div>
+    
+            <!-- Education Item 3 (Left) -->
+            <div class="timeline-item hidden left">
+                <div class="content">
+                    <h3>Holy Cross College of Carigara</h3>
+                    <p>Brgy. Ponong, Carigara, Leyte. S.Y. 2011-2015</p>
+                </div>
+                <div class="dot"></div>
+            </div>
+    
+            <!-- Education Item 4 (Right) -->
+            <div class="timeline-item hidden right">
+                <div class="dot"></div>
+                <div class="content">
+                    <h3>Cassidy Elementary School</h3>
+                    <p> Brgy. Ponong, Carigara, Leyte. S.Y. 2005-2011</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breaker Section-->
+    <section class="grid grid-3">
+        <div class="autoBLur">CONSTELLATION</div>
+        <div class="autoBLur">UI/UX DESIGN</div>
+        <div class="autoBLur">ARVIN</div>
+        <div class="autoBLur">DEVELOPER</div>
+        <div class="autoBLur">DESIGN SYSTEMS</div>
+        <div class="autoBLur">INTERNSHIP</div>
+        <div class="autoBLur">PROTOTYPING</div>
+        <div class="autoBLur">WIREFRAMES</div>
+        <div class="autoBLur">USER RESEARCH</div>
+        <div class="autoBLur">DESIGN THINKING</div>
+        <div class="autoBLur">ACCESSIBILITY</div>
+        <div class="autoBLur">TYPOGRAPHY</div>
+        <div class="autoBLur">CREATIVE PROCESS</div>
+        <div class="autoBLur">COLLABORATION</div>
+        <div class="autoBLur">PORTFOLIO</div>
+    </section>
+
+    <!-- Skill Section-->
+    <section id="skills" class="skills">
+        <!-- Background Shapes -->
+        <div class="background-shapes"></div>
+        <h2>What can I do?</h2>
+        <!-- Upper Part -->
+        <div class="skills-upper">
+            <!-- Hard Skills Box -->
+            <div class="skills-box hard-skills hidden">
+                <h2>Hard Skills</h2>
+                <p>Here are some design tools, softwares, frameworks, and languages, I am good and familiar with.</p>
+                <div class="tags hard-skill-tags">
+                    <div class="skill-tag">Java</div>
+                    <div class="skill-tag">Python</div>
+                    <div class="skill-tag">C++</div>
+                    <div class="skill-tag">HTML</div>
+                    <div class="skill-tag">CSS</div>
+                    <div class="skill-tag">JavaScript</div>
+                    <div class="skill-tag">Figma</div>
+                    <div class="skill-tag">Photoshop</div>
+                    <div class="skill-tag">Illustrator</div>
+                    <div class="skill-tag">Indesign</div>
+                    <div class="skill-tag">Bootstrap</div>
+                    <div class="skill-tag">Django</div>
+                    <div class="skill-tag">React</div>
+                    <div class="skill-tag">AutoCAD</div>
+                    <div class="skill-tag">SketchUp</div>
+                </div>
+            </div>
+    
+            <!-- Continuous Moving Images (Slider) -->
+            <div class="slider-container">
+                <div class="slider" style="--width: 150px; --height: 100px; --quantity: 15;">
+                    <div class="list">
+                        <div class="item" style="--position: 1">
+                            <img src="assets/images/skill1.png" alt="Image 1">
+                        </div>
+                        <div class="item" style="--position: 2">
+                            <img src="assets/images/skill2.png" alt="Image 2">
+                        </div>
+                        <div class="item" style="--position: 3">
+                            <img src="assets/images/skill3.png" alt="Image 3">
+                        </div>
+                        <div class="item" style="--position: 4">
+                            <img src="assets/images/skill4.png" alt="Image 4">
+                        </div>
+                        <div class="item" style="--position: 5">
+                            <img src="assets/images/skill5.png" alt="Image 5">
+                        </div>
+                        <div class="item" style="--position: 6">
+                            <img src="assets/images/skill6.png" alt="Image 6">
+                        </div>
+                        <div class="item" style="--position: 7">
+                            <img src="assets/images/skill7.png" alt="Image 7">
+                        </div>
+                        <div class="item" style="--position: 8">
+                            <img src="assets/images/skill8.png" alt="Image 8">
+                        </div>
+                        <div class="item" style="--position: 9">
+                            <img src="assets/images/skill9.png" alt="Image 9">
+                        </div>
+                        <div class="item" style="--position: 10">
+                            <img src="assets/images/skill10.png" alt="Image 10">
+                        </div>
+                        <div class="item" style="--position: 11">
+                            <img src="assets/images/skill11.png" alt="Image 11">
+                        </div>
+                        <div class="item" style="--position: 12">
+                            <img src="assets/images/skill12.png" alt="Image 12">
+                        </div>
+                        <div class="item" style="--position: 13">
+                            <img src="assets/images/skill13.png" alt="Image 13">
+                        </div>
+                        <div class="item" style="--position: 14">
+                            <img src="assets/images/skill14.png" alt="Image 14">
+                        </div>
+                        <div class="item" style="--position: 15">
+                            <img src="assets/images/skill15.png" alt="Image 15">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Lower Part -->
+        <div class="skills-lower">
+            <!-- For Future Container (Empty) -->
+            <div class="lower-corner-container"></div>
+    
+            <!-- Soft Skills Box -->
+            <div class="skills-box soft-skills hidden">
+                <h2>Soft Skills</h2>
+                <p>I possess a wide range of soft skills, I'm proud with. Studying Architecture has helped me develop a keen eye for design, a strong attention to details, and the ability to work under pressure. I also view criticism as a work improvement and a learning experience.</p>
+                <div class="tags soft-skill-tags">
+                    <div class="skill-tag">Time Management</div>
+                    <div class="skill-tag">Critical Thinking</div>
+                    <div class="skill-tag">Problem Solving</div>
+                    <div class="skill-tag">Communication</div>
+                    <div class="skill-tag">Teamwork</div>
+                    <div class="skill-tag">Adaptability</div>
+                    <div class="skill-tag">Creativity</div>
+                    <div class="skill-tag">Attention to details</div>
+                    <div class="skill-tag">Willingness to learn</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infinite Word Slider Breaker -->
+    <div class="word-slider-container">
+        <div class="word-slider">
+            <div class="word-track" id="word-track">
+                <!-- Words will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <!-- Background Shapes -->
+        <div class="background-shapes"></div>
+        <h2>Undergraduate Works</h2>
+
+        <!-- Case Studies Section -->
+        <h3>Case Studies</h3>
+        <div class="case-studies-grid hidden">
+            <!-- Case Study 1 -->
+            <div class="case-study">
+                <img src="assets/images/case1-2.jpg" alt="Case Study 1">
+                <div class="case-study-content">
+                    <h4>NPK Monitoring System</h4>
+                    <p>A web-based system for monitoring NPK levels in hydroponics farming, integrating IoT and django web framework.</p>
+                    <button class="see-more-btn" onclick="openCaseStudyModal('case1')">See More</button>
+                </div>
+            </div>
+            <!-- Case Study 2 -->
+            <div class="case-study">
+                <img src="assets/images/case2-1.png" alt="Case Study 2">
+                <div class="case-study-content">
+                    <h4>Fatima Clinic Webpage</h4>
+                    <p>A proposed webpage for Fatima Clinic Tacloban, for 2024 September exhibit.</p>
+                    <button class="see-more-btn" onclick="openCaseStudyModal('case2')">See More</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Study Modal -->
+        <div id="caseStudyModal" class="case-study-modal hidden">
+            <div class="case-study-modal-content">
+                <!-- Left Side: Image Viewer -->
+                <div class="case-study-images">
+                    <button class="case-study-prev-btn" onclick="caseStudyPrevImage()">&#10094;</button>
+                    <img id="caseStudyImage" src="" alt="Case Study Image">
+                    <button class="case-study-next-btn" onclick="caseStudyNextImage()">&#10095;</button>
+                </div>
+
+                <!-- Right Side: Text Content -->
+                <div id="caseStudyBody" class="case-study-text"></div>
+
+                <!-- Close Button -->
+                <span class="case-study-close-btn" onclick="closeCaseStudyModal()">&times;</span>
+            </div>
+        </div>
+        <!-- Wireframing -->
+        <h3>Wireframing</h3>
+        <div class="carousel-wrapper">
+            <!-- Snaking Text -->
+            <div class="snaking-text">
+                <p>★ Design Thinker ★ Design Thinker ★ Design Thinker ★</p>
+            </div>
+        
+            <!-- Carousel Container -->
+            <div class="carousel-container hidden">
+                <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel" aria-live="polite">
+                    <div class="carousel-slide">
+                        <img src="assets/images/wireframe1.png" alt="Brochure 1">
+                        <h3>Sample 1</h3>
+                        <p>A wireframing for mobile view of the proposed Fatima Webpage.</p>
+                        <p class="italize">Designed in Figma</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="assets/images/wireframe2.png" alt="Brochure 2">
+                        <h3>Sample 2</h3>
+                        <p>A wireframing for NPK Monitoring System Flow and Content.</p>
+                        <p class="italize">Designed in Figma</p>
+                    </div>
+                </div>
+                <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        
+        <!-- Unique Carousel Modal -->
+        <div class="carousel-modal" id="carouselModal">
+            <div class="carousel-modal-content">
+                <span class="carousel-modal-close">&times;</span>
+                <img id="carouselModalImage" src="" alt="Enlarged Slide">
+                <div id="carouselModalText">
+                    <h3 id="carouselModalTitle"></h3>
+                    <p id="carouselModalDescription"></p>
+                    <p id="carouselModalStyle" class="italize"></p>
+                </div>
+            </div>
+        </div>
+        <!-- Visual Design -->
+        <!-- Graphic Design Section -->
+        <h3>Graphic Design Works</h3>
+        <p>Check out my visual designs to see how versatile I am.</p>
+        <div class="graphic-design-grid hidden">
+            <!-- Magazine Covers -->
+            <div class="design-item" onclick="openGallery('magazine')">
+                <img src="assets/images/group1.png" alt="Magazine Covers">
+                <div class="overlay">
+                    <p class="overlay-text">Click to View More</p>
+                </div>
+                <h4>Magazine Covers</h4>
+            </div>
+            <!-- Book Covers -->
+            <div class="design-item" onclick="openGallery('book')">
+                <img src="assets/images/group2.png" alt="Book Covers">
+                <div class="overlay">
+                    <p class="overlay-text">Click to View More</p>
+                </div>
+                <h4>Book Covers</h4>
+            </div>
+            <!-- Logos -->
+            <div class="design-item" onclick="openGallery('logos')">
+                <img src="assets/images/group3.png" alt="Logos">
+                <div class="overlay">
+                    <p class="overlay-text">Click to View More</p>
+                </div>
+                <h4>Logos</h4>
+            </div>
+            <!-- Brochures and Flyers -->
+            <div class="design-item" onclick="openGallery('brochures')">
+                <img src="assets/images/group4.png" alt="Brochures and Flyers">
+                <div class="overlay">
+                    <p class="overlay-text">Click to View More</p>
+                </div>
+                <h4>Brochures and Flyers</h4>
+            </div>
+        </div>
+
+        <!-- Modal for Gallery with Carousel -->
+        <div id="galleryModal" class="modal hidden">
+            <div class="modal-content">
+                <!-- Close Button -->
+                <span class="close-btn" onclick="closeGallery()">&times;</span>
+
+                <!-- Gallery Image -->
+                <img id="galleryImage" src="" alt="Gallery Image">
+
+                <!-- Previous and Next Buttons -->
+                <button class="prev-btn" onclick="prevImage()">&#10094;</button>
+                <button class="next-btn" onclick="nextImage()">&#10095;</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <!-- First Column: Contact Me Content -->
+            <div class="contact-content">
+                <h2>Contact Me</h2>
+                <p>Wanna Collaborate or just say hi?</p>
+                
+                <!-- Email Button -->
+                <a href="mailto:your.arlesigues122@gmail.com" class="btn">Email Me</a>
+                
+                <p>Feel free to check out my resume too.</p>
+                <!-- Download Resume Button -->
+                <a href="assets/pdf/Resume.pdf" download="Resume.pdf" class="btn download-btn">
+                    Resume PDF
+                </a>
+            </div>
+    
+            <!-- Second Column: Socials and Phone -->
+            <div class="contact-info">
+                <!-- Socials Section -->
+                <div class="socials">
+                    <p>Let's Connect on Social Media:</p>
+                    <div class="social-buttons">
+                        <a href="https://www.facebook.com/arvin.lesigues.7/" target="_blank" class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i> Facebook
+                        </a>
+                        <a href="https://www.instagram.com/arvinex_22/" target="_blank" class="social-btn instagram">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                    </div>
+                </div>
+            
+                <!-- Phone Number -->
+                <div class="phone">
+                    <p>Call or Text Me:</p>
+                    <p>Smart: 09982634408</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Container for Meteor Shower Background -->
+        <div class="meteor-container"></div>
+        <div class="stars"></div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" title="Launch to top">
+        🚀
+    </button>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Arvin Lesigues | All Rights Reserved</p>
+        <div class="social-icons">
+            <a href="https://github.com/Alskylar25"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/arvin-lesigues-425a79185/"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
