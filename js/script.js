@@ -1,6 +1,6 @@
 //Typing Effect
 const typingText = document.querySelector(".typing-text");
-const words = ["UI/UX Designer", "Creative Thinker", "Web Developer"];
+const words = ["UI/UX Designer", "Graphic Designer", "Web Developer"];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
